@@ -21,6 +21,9 @@ class Helper(cmd.Bot):
         self.last_ready = None
         self.last_resume = None
 
+        self.command_regex = None
+        self.command_dms_regex = None
+
         def clean_code(content):
             content = content.strip()
 
