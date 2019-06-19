@@ -8,7 +8,7 @@ from helper.common import *
 nl = '\n'
 
 
-class ExtUtilCog:
+class ExtUtilCog(cmd.Cog):
     def __init__(self, bot):
         self.bot = bot
 

@@ -18,7 +18,7 @@ This bot requires Python 3.6+, the [`requests`](https://pypi.org/project/request
 ```sh
 # Install dependencies
 $ python3 -m pip install -U requests
-$ python3 -m pip install -U https://github.com/Rapptz/discord.py/archive/rewrite.zip#egg=discord.py[voice]
+$ python3 -m pip install -U discord.py[voice]
 
 # Clone repo
 $ git clone https://github.com/max-kamps/helper.git

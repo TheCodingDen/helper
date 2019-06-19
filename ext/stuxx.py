@@ -1,4 +1,5 @@
 import random
+import discord.ext.commands as cmd
 
 
 responses = [
@@ -13,7 +14,7 @@ responses = [
 ]
 
 
-class StuxxCog:
+class StuxxCog(cmd.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.last_response = None

@@ -11,7 +11,7 @@ escape_tt = str.maketrans({
 ansi_re = re.compile(r'\x1b\[.*?m')
 
 
-class CheatShCog:
+class CheatShCog(cmd.Cog):
     def __init__(self, bot):
         self.bot = bot
 

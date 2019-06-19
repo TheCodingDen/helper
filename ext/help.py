@@ -12,7 +12,7 @@ def cmd_str_debug(c):
     return f'**{c.usage or c.name}** [{", ".join(check.__qualname__.split(".", maxsplit=1)[0] for check in c.checks)}]\n{c.description or "No description"}\n'
 
 
-class HelpCog:
+class HelpCog(cmd.Cog):
     def __init__(self, bot):
         self.bot = bot
 

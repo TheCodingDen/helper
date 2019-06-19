@@ -14,7 +14,7 @@ url_tt = str.maketrans({
 mark_re = re.compile(r'</?mark>')
 
 
-class MDNCog:
+class MDNCog(cmd.Cog):
     def __init__(self, bot):
         self.bot = bot
 
