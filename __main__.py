@@ -1,7 +1,7 @@
 import logging
 import sys
 import os
-import json
+import hjson
 import contextlib
 
 import helper.mixins
@@ -11,8 +11,8 @@ from .helper import Helper
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-with open('config.json') as f:
-    conf = json.load(f, object_hook=Obj)
+with open('config.hjson') as f:
+    conf = hjson.load(f, object_hook=Obj, object_pairs_hook=None)
 
 sys.path.append(os.path.join(os.getcwd(), conf.extension_dir))
 

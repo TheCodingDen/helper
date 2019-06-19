@@ -19,13 +19,14 @@ This bot requires Python 3.6+, the [`requests`](https://pypi.org/project/request
 # Install dependencies
 $ python3 -m pip install -U requests
 $ python3 -m pip install -U discord.py[voice]
+$ python3 -m pip install -U hjson
 
 # Clone repo
 $ git clone https://github.com/max-kamps/helper.git
 
 # Create the config file
 $ cd helper
-$ cp example.config.json config.json
+$ cp example.config.hjson config.hjson
 
 # Make sure to add your token to the config file
 
