@@ -3,6 +3,7 @@ import datetime
 import inspect
 import logging
 
+import discord
 import discord.ext.commands as cmd
 from discord.ext.commands.view import StringView
 
