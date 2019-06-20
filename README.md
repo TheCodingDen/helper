@@ -14,7 +14,7 @@ In direct messages the mention is optional.
 Use the `help` command to list available commands, or `_help` to list all commands, even hidden ones.
 
 ## Installation
-This bot requires Python 3.6+, the [`requests`](https://pypi.org/project/requests/) module and the [`discord.py` rewrite](https://github.com/Rapptz/discord.py/tree/rewrite).
+This bot requires Python 3.6+, as well as the [`requests`](https://pypi.org/project/requests/), [`discord.py`](https://pypi.org/project/discord.py/), and [`hjson`](https://pypi.org/project/hjson/) modules.
 ```sh
 # Install dependencies
 $ python3 -m pip install -U requests
