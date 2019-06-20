@@ -107,8 +107,8 @@ class Helper(cmd.Bot):
 
         self.last_ready = now
 
-        self.command_regex = re.compile(fr'^<@!?{self.user.id}>\s*(.*?)\s*$')
-        self.command_dms_regex = re.compile(fr'^(?:<@!?{self.user.id}>)?\s*(.*?)\s*$')
+        self.command_regex = re.compile(fr'(?s)^<@!?{self.user.id}>(.*)$')
+        self.command_dms_regex = re.compile(fr'(?s)^(?:<@!?{self.user.id}>)?(.*)$')
 
     async def on_resumed(self):
         log.warning(f'Resumed')
@@ -116,6 +116,8 @@ class Helper(cmd.Bot):
 
     async def get_context(self, message, *, cls=cmd.Context):
         r"""AAAAAAAHHHHHHHHHHHHHHHH WHY!!!!!!"""
+        if self.command_regex is None:
+            return cls(prefix=None, view=None, bot=self, message=message)
 
         cmd_regex = self.command_dms_regex if message.guild is None else self.command_regex
         match = cmd_regex.match(message.content)
@@ -123,7 +125,7 @@ class Helper(cmd.Bot):
         if not match:
             return cls(prefix=None, view=None, bot=self, message=message)
 
-        view = StringView(match.group(1))
+        view = StringView(match.group(1).strip())
         ctx = cls(prefix=None, view=view, bot=self, message=message)
 
         if self._skip_check(message.author.id, self.user.id):
