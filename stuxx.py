@@ -1,5 +1,7 @@
 import random
-import discord.ext.commands as cmd
+
+from ...common import *
+from ... import module as mod
 
 
 responses = [
@@ -14,22 +16,17 @@ responses = [
 ]
 
 
-class StuxxCog(cmd.Cog):
-    def __init__(self, bot):
-        self.bot = bot
+class StuxxModule(mod.Module):
+    def on_load(self):
         self.last_response = None
 
-        @bot.listen()
-        async def on_message(msg):
-            if msg.content.startswith('stuxx rate my'):
+    @mod.Module.listener()
+    async def on_message(self, msg):
+        if msg.content.startswith('stuxx rate my'):
+            response = random.choice(responses)
+
+            while response == self.last_response: 
                 response = random.choice(responses)
-
-                while response == self.last_response: 
-                    response = random.choice(responses)
-                
-                self.last_response = response
-                await msg.channel.send(response)
-
-
-def setup(bot):
-    bot.add_cog(StuxxCog(bot))
+            
+            self.last_response = response
+            await msg.channel.send(response)
