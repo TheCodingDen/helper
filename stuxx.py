@@ -17,7 +17,7 @@ responses = [
 
 
 class StuxxModule(mod.Module):
-    def on_load(self):
+    async def on_load(self):
         self.last_response = None
 
     @mod.Module.listener()

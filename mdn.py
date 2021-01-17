@@ -9,6 +9,9 @@ from ...common import *
 from ... import module as mod
 
 
+log = mod.get_logger()
+
+
 url_tt = str.maketrans({
     ')': '\\)'
 })
@@ -17,20 +20,17 @@ mark_re = re.compile(r'</?mark>')
 
 
 class MDNModule(mod.Module):
-    def on_load(self):
-        self.session = None
+    async def on_load(self):
+        self.session = aiohttp.ClientSession()
+        log.info('Session opened')
     
-    def on_unload(self):
+    async def on_unload(self):
         if self.session:
-            self.log.info('Closing session...')
-            mod.loop.create_task(self.session.close())
+            log.info('Closing session...')
+            await self.session.close()
 
     @cmd.command(name='mdn', usage='mdn <search terms>', description='Search the Mozilla Developer Network')
     async def cmd_mdn(self, ctx, *search_terms: str):
-        if not self.session:
-            self.session = aiohttp.ClientSession()
-            self.log.info('Session opened')
-
         # TODO: Deal with timeouts ~hmry (2020-01-20, 01:25)
         async with self.session.get(
             'https://developer.mozilla.org/api/v1/search/en-US',
