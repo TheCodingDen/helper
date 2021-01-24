@@ -10,7 +10,7 @@ responses = [
     '''Did **you** draw that or did a chimpanzee kick over an inkpot?''',
     '''There are rhynos out there that have more talent.''',
     '''Pro tip: next time don't turn the keyboard upside down.''',
-    '''Quick! someone call an ambulance! This guy is having a stroke!''',
+    '''Quick! someone call an ambulance! This person is having a stroke!''',
     '''They say everyone is entitled to their own opinion. But **that** is just objectively wrong.''',
     '''Even a Tippex brush has not seen that many mistakes in its life.''',
 ]
