@@ -16,8 +16,6 @@ url_tt = str.maketrans({
     ')': '\\)'
 })
 
-mark_re = re.compile(r'</?mark>')
-
 
 class MDNModule(mod.Module):
     async def on_load(self):
@@ -43,7 +41,7 @@ class MDNModule(mod.Module):
         embed = discord.Embed(
             colour=getattr(ctx.me, 'color', 0),
             description='\n'.join(
-                f'**[{doc.title}]({f"https://developer.mozilla.org/{doc.locale}/docs/{doc.slug}".translate(url_tt)})**\n{mark_re.sub("*", doc.excerpt)}\n'
+                f'**[{doc.title}]({f"https://developer.mozilla.org/{doc.locale}/docs/{doc.slug}".translate(url_tt)})**\n{doc.summary}\n'
                 for doc in result.documents[:3]
             )
         )
